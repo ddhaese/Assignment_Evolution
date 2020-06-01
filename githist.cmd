@@ -16,6 +16,9 @@ FOR /D %%i IN (*) DO CALL :GitHistRepo "%%i"
 ECHO Parsing raw results ...
 python githist.py -i githist.raw -o githist.tsv >> githist.log
 
+ECHO Creating plots...
+R CMD BATCH githist.r
+
 EXIT /B %ERRORLEVEL% 
 
 :GitHistRepo
